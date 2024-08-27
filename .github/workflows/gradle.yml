@@ -1,18 +1,7 @@
 name: Java CI
 
 on:
-  push:
   workflow_dispatch:
-    inputs:
-      ALLURE_JOB_RUN_ID:
-        description: "Inner parameter for Allure TestOps"
-        required: false
-      ALLURE_USERNAME:
-        description: "Inner parameter for Allure TestOps"
-        required: false
-
-env:
-  ALLURE_JOB_RUN_ID: ${{ github.event.inputs.ALLURE_JOB_RUN_ID }}
 
 jobs:
   test:
@@ -24,12 +13,12 @@ jobs:
         distribution: 'zulu'
         java-version: '17'
         cache: 'gradle'
-    - uses: allure-framework/setup-allurectl@v1
-      with:
-        allure-endpoint: https://demo.testops.cloud
-        allure-token: ${{ secrets.ALLURE_TOKEN }}
-        allure-project-id: 1064
+    # - uses: allure-framework/setup-allurectl@v1
+    #   with:
+    #     allure-endpoint: https://demo.testops.cloud
+    #     allure-token: ${{ secrets.ALLURE_TOKEN }}
+    #     allure-project-id: 1064
     - name: Run Tests
-      run: allurectl watch -- ./gradlew clean test
-      env:
-        ALLURE_RESULTS: build/allure-results
+      run: |
+        gradlew clean test
+
