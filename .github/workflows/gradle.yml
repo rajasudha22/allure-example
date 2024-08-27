@@ -20,5 +20,5 @@ jobs:
     #     allure-project-id: 1064
     - name: Run Tests
       run: |
-        gradlew clean test
+        ./gradlew clean test
 
