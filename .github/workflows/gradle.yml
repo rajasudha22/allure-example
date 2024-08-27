@@ -28,7 +28,7 @@ jobs:
         sudo ln -s /opt/allure-2.18.1/bin/allure /usr/bin/allure
     - name: List directories
       run: |          
-        allure generate --clean target/allure-results -o allure-report  
+        allure generate --clean build/allure-results -o allure-report  
     - name: Upload Allure Report as Artifact
       uses: actions/upload-artifact@v3
       with:
